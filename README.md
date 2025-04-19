@@ -38,5 +38,5 @@ This repository provides two handy shell scripts to help you **upload** and **up
 
 ###  `update_git`
 Use it to update an **existing** project you've already pushed to GitHub:
-cd /path/to/your/project
-update_git "Fix: improved image parser"
+- cd /path/to/your/project
+- update_git "Fix: improved image parser"
