@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Author: Nhat Ninh
+# Modified date 19/4/2025
+# Description: This script helps to automatically upload code to github
+# Usaged: upload_git <link_github_repo_URL>
+
+
+# Check if URL is not passed then report error
+if [ -z "$1" ]; then
+  echo " Please provide the GitHub repo URL."
+  echo "Usage: gitupload.sh <repo-url> [commit-message]"
+  exit 1
+fi
+
+REPO_URL=$1
+COMMIT_MSG=${2:-"Initial commit"}
+
+echo " Current directory: $(pwd)"
+echo " Target GitHub repo: $REPO_URL"
+echo " Commit message: $COMMIT_MSG"
+
+# Initialize Git repo if not already present
+if [ ! -d ".git" ]; then
+  echo " Initializing new Git repo..."
+  git init
+else
+  echo " Git repo already initialized."
+fi
+
+# Add remote origin if not already present
+if ! git remote | grep -q origin; then
+  git remote add origin "$REPO_URL"
+  echo " Remote 'origin' set to $REPO_URL"
+else
+  echo " Remote 'origin' already exists."
+fi
+
+# Commit và push
+git add .
+git commit -m "$COMMIT_MSG"
+git branch -M main
+git push -u origin main
+
+echo " Upload complete!"

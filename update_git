@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Author: Nhat Ninh
+# Modified date 19/4/2025
+# Description: This script helps to automatically update code to github
+# Usaged: edit your code then type: update_git
+
+
+# Optional: pass commit message from command line, otherwise use timestamp
+COMMIT_MSG=${1:-"Update on $(date '+%Y-%m-%d %H:%M:%S')"}
+
+echo " Commit message: $COMMIT_MSG"
+
+# Check if current directory is a Git repo
+if [ ! -d .git ]; then
+  echo " Not a Git repository. Please run inside a Git-initialized folder."
+  exit 1
+fi
+
+# Add all changes
+git add .
+
+# Commit
+git commit -m "$COMMIT_MSG"
+
+# Push
+git push origin main
+
+echo " Code updated to GitHub complete!"
