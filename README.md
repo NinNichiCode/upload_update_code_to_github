@@ -1,4 +1,4 @@
-# 🛠️ Git Upload & Update Automation Scripts
+# Git Upload & Update Automation Scripts
 
 This repository provides two handy shell scripts to help you **upload** and **update** your local code projects to GitHub automatically and more easily using Git Bash.
 
